@@ -1,88 +1,85 @@
-# 📊 ESG Risk Analysis: Insights from S&P 500 Companies
+# **ESG Risk Analysis: Insights from S&P 500 Companies**
 
-**Author: Debraj Mahato**
+This repository provides an in-depth analysis of Environmental, Social, and Governance (ESG) risk for companies listed in the S&P 500. The project utilizes machine learning to predict future ESG risk scores, helping investors and stakeholders assess sustainability and governance factors. Through sector-wise analysis and predictive modeling, this repository offers a comprehensive approach to ESG risk evaluation.
 
----
+## **Table of Contents**
+- [Introduction](#introduction)
+- [Dataset Overview](#dataset-overview)
+- [Analysis](#analysis)
+  - [Sector-wise ESG Risk Analysis](#sector-wise-esg-risk-analysis)
+  - [Top Performers by ESG Risk Level](#top-performers-by-esg-risk-level)
+  - [Predictive Analysis](#predictive-analysis)
+- [Model Construction](#model-construction)
+  - [Features and Approach](#features-and-approach)
+  - [Outlier Detection and Model Refinement](#outlier-detection-and-model-refinement)
+- [Evaluation](#evaluation)
+  - [Accuracy](#accuracy)
+  - [Testing Number of Estimators](#testing-number-of-estimators)
+- [Conclusion](#conclusion)
+- [Usage](#usage)
+- [Sources](#sources)
 
-## 🚀 Project Overview
+## **Introduction**
 
-This repository explores **Environmental, Social, and Governance (ESG) risk analysis** using a dataset of **S&P 500 companies**. ESG has become a vital lens through which companies are assessed, complementing traditional financial metrics with sustainability and ethical governance insights. The goal of this project is to **analyze, visualize, and model ESG risk factors**, helping stakeholders make data-driven decisions.
+In an era where sustainability is paramount, ESG risk analysis offers a vital tool for evaluating companies’ environmental, social, and governance practices. This project focuses on analyzing the ESG risk profiles of S&P 500 companies, offering insights for investors and decision-makers. The dataset includes key ESG parameters, and the project employs machine learning models to predict future ESG risk scores.
 
----
+## **Dataset Overview**
 
-## 🌍 Why ESG Matters
+The dataset features ESG risk scores for S&P 500 companies, with the following key metrics:
+- **Environmental Risk Score**: Reflects the company’s ecological impact and practices.
+- **Social Risk Score**: Measures the company’s societal contributions and community impact.
+- **Governance Risk Score**: Assesses corporate governance practices and ethics.
+- **Controversy Level & Score**: Tracks public controversies and their intensity.
+- **Total ESG Risk Score**: A comprehensive score combining all ESG factors.
 
-With growing emphasis on sustainability and corporate responsibility, ESG analysis is crucial for:
+## **Analysis**
 
-- **Investors**: Identifying long-term risks and sustainable opportunities.
-- **Companies**: Enhancing reputation and operational resilience.
-- **Policymakers & Researchers**: Understanding industry-wide ESG trends.
+### **Sector-wise ESG Risk Analysis**
+The analysis highlights ESG risk levels across different sectors:
+- **High ESG Risk**: The **Energy** and **Utilities** sectors face significant environmental and social risks.
+- **Low ESG Risk**: **Real Estate** and **Technology** sectors have the lowest ESG risk exposure.
 
-By examining ESG metrics, stakeholders gain a **comprehensive understanding** of a company's sustainability profile and potential vulnerabilities.
+### **Top Performers by ESG Risk Level**
+Some companies, like **Pentair Plc** and **Costar Group Inc**, have balanced ESG profiles, with scores close to the sector mean. These companies are considered good examples of effective ESG risk management.
 
----
+## **Predictive Analysis**
 
-## 🔑 Key ESG Metrics
+### **Model Objective and Overview**
+The predictive model is designed to estimate a company’s future ESG risk score based on historical data. Key features include:
+- **Sector**
+- **Industry**
+- **Employee count**
+- **Environmental, Social, and Governance Risk Scores**
 
-| **Metric**                  | **Description**                                                                                 |
-|-----------------------------|-------------------------------------------------------------------------------------------------|
-| 🌎 Environmental Risk Score | Evaluates ecological impact and commitment to sustainability.                                   |
-| 🏛️ Governance Risk Score    | Assesses governance structure, ethics, and corporate transparency.                              |
-| 🤝 Social Risk Score        | Measures societal impact, including employee welfare and diversity.                             |
-| ⚠️ Controversy Level        | Categorical measure (e.g., Low/Medium/High) of public or legal controversies.                   |
-| 🔢 Controversy Score        | Numeric value quantifying the intensity of controversies (linked to reputational risks).        |
+### **Model Construction**
+A **Random Forest Classifier** is employed for prediction, with the model’s performance initially impacted by outliers and data leakage. After removing problematic features (like "ESG Risk Percentile"), the model is retrained, resulting in more balanced predictions.
 
----
+### **Outlier Detection and Model Refinement**
+Outliers were identified and removed to enhance model accuracy. The final model demonstrated a reasonable accuracy of **87.2%**, with the **Environment Risk Score** being the most influential predictor.
 
-## 🗂️ Dataset Overview
+## **Evaluation**
 
-The dataset focuses on companies listed in the **S&P 500 index** and includes the following key columns:
+### **Accuracy**
+The model achieved an accuracy of **87.2%** using the **Random Forest Classifier**. This level of accuracy suggests good predictive potential but also indicates room for further refinement.
 
-- `Symbol`
-- `Sector`
-- `Industry`
-- `Full Time Employees`
-- `Total ESG Risk Score`
-- `Environmental / Governance / Social Risk Scores`
-- `Controversy Level` & `Controversy Score`
+### **Testing Number of Estimators**
+Adjusting the "n_estimators" parameter showed an improvement in accuracy, though the law of diminishing returns applies after a certain point. Optimizing this parameter strikes a balance between accuracy and efficiency.
 
-This dataset can support ESG risk profiling, trend analysis, investment screening, and academic research.
+## **Conclusion**
 
----
+ESG risk analysis is crucial for understanding a company's sustainability and governance practices. This project empowers investors to make informed decisions by analyzing ESG risk scores and predicting future trends. By integrating ESG factors into decision-making, businesses can foster sustainable growth and responsible practices.
 
-## ⚙️ Data Cleaning Process
+## **Usage**
 
-1. **Drop rows with missing ESG scores:**
-   - `Total ESG Risk Score`
-   - `Environmental Risk Score`
-   - `Governance Risk Score`
-   - `Social Risk Score`
+To use this analysis and model, clone this repository and follow the instructions in the installation section. The machine learning model can be customized for different datasets to predict ESG risk scores for other companies or sectors.
 
-2. **Fill numeric missing values:**
-   - `Full Time Employees`: Filled with median.
+## **Sources**
 
-3. **Fill categorical missing values:**
-   - `Controversy Level`: Filled with `'Unknown'`.
-   - `ESG Risk Level`: Filled with `'Unknown'`.
-
-4. **Handle remaining missing values:**
-   - Option to **drop rows** with missing `Controversy Score` or **impute** them using statistical/machine learning methods.
-
----
-
-## 🔬 Analysis & Modeling
-
-The repository includes:
-
-- **Descriptive analysis** of ESG risk scores.
-- **Visualization** of ESG distribution and outliers.
-- **Predictive modeling** using **Random Forest Regressor** to forecast ESG-related metrics.
-
----
-
-## 🚀 How to Run
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/your-username/esg-risk-analysis.git
+1. "The Business Case for ESG" by Harvard Business Review. [Link](https://hbr.org/2019/05/the-business-case-for-esg)
+2. "Environmental, Social and Governance (ESG) Criteria" by Investopedia. [Link](https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp)
+3. "Why ESG Matters: The Sustainable Investor's Guide" by BlackRock. [Link](https://www.blackrock.com/us/individual/education/understanding-esg-investing)
+4. "ESG Ratings: An Overview" by MSCI. [Link](https://www.msci.com/our-solutions/esg-investing/esg-ratings)
+5. "ESG and Corporate Financial Performance: Mapping the Landscape" by Journal of Applied Corporate Finance. Authors: Mozaffar Khan, George Serafeim, and Aaron Yoon. [Link](https://onlinelibrary.wiley.com/doi/full/10.1111/jacf.12221)
+6. "ESG Risk and Financial Performance: The Long View" by Morgan Stanley. [Link](https://www.morganstanley.com/ideas/esg-sustainable-investing-performance)
+7. "A Primer on Environmental, Social, and Governance (ESG) Metrics" by The World Bank. [Link](https://www.worldbank.org/en/topic/sustainabledevelopment/brief/esg-metrics-primer)
+8. "Corporate Governance and Equity Prices" by Paul Gompers and Joy Ishii. [Link](https://www.nber.org/papers/w8449)
